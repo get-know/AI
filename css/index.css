@@ -1,0 +1,51 @@
+*{
+	margin:0;
+	padding:0;
+}
+.main{
+	position: relative;
+	width: 7.5rem;
+	height: 13.34rem;
+	padding-top:5.4rem;
+	background-color: #fbfbfb;
+	box-sizing: border-box;
+}
+.main .user-img{
+	position: absolute;
+	top: 1.88rem;
+	left: 2.24rem;
+	width: 3rem;
+	height: 3rem;
+	background: url('../img/user-img.png') no-repeat center/cover;
+}
+.main .user-name{
+	width: 100%;			
+	margin:0 auto;
+	font-weight: bold;
+	font-size: 26px;
+	text-align: center;
+	color:#444;
+}
+.main .login,
+.main .recognition{
+	position: absolute;
+	width: 4.68rem;
+	height: .68rem;
+	line-height: .68rem;
+	border-radius:34px;
+	font-size: .22rem;
+	color:#fff;
+	text-align: center;
+}
+.main .login{
+	bottom: 2.65rem;
+	left: 1.4rem;
+	box-shadow: 0 5px 15px 0 #a7d2fa;
+	background-image: -webkit-linear-gradient(left,#60a2fd,#6eb1fd,#7cc2fe);
+}	
+.main .recognition{
+	left: 1.4rem;
+	bottom: 1.48rem;
+	box-shadow: 0 5px 15px 0 #b6e6b7;
+	background-image: -webkit-linear-gradient(left,#90cb81,#99d466,#a1dd52);
+}

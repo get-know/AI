@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <script src="js/rem.js"></script>
+    <style>
+    	*{
+    		margin: 0;
+    		padding: 0;
+    	}
+    	.main{
+    		position: relative;
+    		width: 7.5rem;
+    		height: 13.34rem;
+    		padding-top:2.22rem;
+    		background-color: #f4f4f4;
+    		box-sizing:border-box;
+    	}
+    	.main .user-img{
+    		position: relative;
+    		width: 2.22rem;
+    		height: 2.22rem;
+    		margin:0 auto;
+    		border-radius:50%;
+    		background-color: #e3eee7;
+    		box-shadow: 0 0 0 .5rem #ebf2ed,0 0 0 1rem #f1f3f1;
+    	}
+    	.main .user-img .circle{
+    		position: absolute;
+    		top: .34rem;
+    		left: .76rem;
+    		width: .66rem;
+    		height: .66rem;
+    		border-radius:50%;
+    		box-shadow: 0 2px :;0px 1px #a8d3b0;
+    		background-image: -webkit-linear-gradient(top,#92ca5b,#8ac16d,#80b688);
+    	}
+    	.main .user-img .rectangle{
+    		position: absolute;
+    		left: .48rem;
+    		bottom: .48rem;
+    		width: 1.24rem;
+    		height: .6rem;
+    		border-radius:.4rem;
+    		box-shadow: 0 2px 10px 1px #a8d3b0;
+    		background-image: -webkit-linear-gradient(top,#92ca5b,#8ac16d,#80b688);
+    	}
+    	.main .tips{
+    		position: absolute;
+    		top: 5.2rem;
+    		left: 0;
+    		width: 100%;
+    		text-align: center;
+    		
+    	}
+    	.main .tips .tips1{
+    		width: 100%;
+    		font-size: .26rem;
+    		font-weight: bold;
+    		color:#7fb474;    		
+    	}
+    	.main .tips .tips2{
+    		width: 100%;
+    		margin-top: .25rem;
+    		font-size: .22rem;
+    		color:#929292;
+    	}
+    	/*.main .input{
+    		position: relative;
+    	}*/
+    	.main .input input{
+    		position: absolute;
+    		top: 7.58rem;
+    		left: 0;
+    		right: 0;
+    		margin-left:auto;
+    		margin-right:auto;
+    		width: 5.47rem;
+    		height: .57rem;
+    		line-height: .57rem;
+    		text-indent:.4rem;
+    		outline: none;
+    		border:none;
+    		border-bottom:1px solid #e8e8e8;
+    		background-color: #f4f4f4;
+    	}
+
+    	.main .input > i{
+    		position: absolute;
+    		top: 7.79rem;
+    		left: 1.03rem;
+    		width: .2rem;
+    		height: .1rem;
+    		border-radius:.05rem;
+    		background-color: #f2c93b;
+    		z-index:999;
+    		box-shadow:0 2px 5px -1px #eed78a;
+    	}
+    	.main .start{
+    		position: absolute;
+    		left: 0;
+    		bottom: 1.9rem;
+    		right: 0;
+    		margin-left: auto;
+    		margin-right: auto;
+    		width: 3.7rem;
+    		height: .7rem;
+    		background-color: #e8e8e8;
+    		border-radius:.35rem;
+    		line-height: .7rem;
+    		font-size: .22rem;
+    		color:#a2a2a2;
+    		text-align: center;
+    	}
+    	.main .start.on{
+    		color:#fff;
+    		background-color: #92ca5b;
+    	}
+    	
+    </style>
+</head>
+<body>
+	<div class="main">
+		<div class="user-img">
+			<div class="circle"></div>
+			<div class="rectangle"></div>			
+		</div>
+		<div class="tips">
+			<p class="tips1">请通过人脸识别验证您的身份</p>
+			<p class="tips2">请按照以下步骤完成脸部验证</p>
+		</div>
+		<div class="input" >
+			<i></i>
+			<input type="text" placeholder="请输入您的名字" id="input" value=""/>		
+		</div>
+		<div class="start">开始识别</div>
+	</div>
+</body>
+</html>
+<script>
+//	input获取焦点与失去焦点事件
+	!function(){
+		let oInp = document.getElementById('input'),
+			oStart = document.querySelector('.start'),
+			flag = false;
+		
+		
+		oStart.onclick = function(){
+			if(flag){
+				window.location.href = 'shibieing.html';
+			}else{
+				alert('请输入您的名字！');
+				oInp.focus();
+			}
+		}
+		oInp.onfocus = function(){
+			if(!this.value){
+				this.placeholder = '';	
+			}
+			oInp.onkeydown = function(){
+				console.log(this.value.length);
+				if(this.value.length > 1){
+					oStart.classList.add('on');
+					flag = true;
+				}
+				else if(this.value.length < 4){
+					oStart.classList.remove('on');
+					flag = false;
+				}
+			}
+			
+		}
+		oInp.onblur = function(){
+			if(!this.value){
+				this.placeholder = '请输入您的名字';
+				
+			}
+		}
+	}();	
+</script>

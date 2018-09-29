@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <title></title>
+	    <script src="js/rem.js"></script>
+	    <style>
+	    	*{
+	    		margin:0;
+	    		padding: 0;
+	    	}
+	    	.main{
+	    		position: relative;
+	    		width: 7.5rem;
+	    		height: 13.4rem;
+	    		background-color: #f4f4f4;
+	    	}	    		    	
+	    	.main .user-img{
+	    		overflow: hidden;
+	    		position: absolute;
+				top: 1.88rem;
+				left: 2.24rem;
+				width: 3.02rem;
+				height: 3rem;
+	    	}
+	    	.main .user-img >img{				
+				width: 3rem;
+				height: 3rem;
+				box-shadow: 0 0 0px 2px #ccc;
+				/*background: url('img/user-img.png') no-repeat center/cover;*/
+			}		
+			.main .bg > img{
+	    		position: absolute;
+	    		left: 0;
+				width: 3rem;
+				height: 3rem;
+				z-index:999;				
+				/*-webkit-animation: run 3s;*/
+	    	}
+	    	.main .confirm,
+	    	.main .home{
+	    		position: absolute;	    		
+	    		font-size: .22rem;
+				color:#fff;
+				width: 4.68rem;
+				height: .68rem;
+				line-height: .68rem;
+				border-radius:34px;
+				text-align: center;
+	    	}
+	    	.main .confirm{
+	    		bottom: 2.65rem;
+				left: 1.4rem;
+				box-shadow: 0 5px 15px 0 #ccc;
+				background: #ccc;
+	    	}
+	    	.main .confirm.on{
+	    		box-shadow: 0 5px 15px 0 #a7d2fa;
+	    		background-image: -webkit-linear-gradient(left,#60a2fd,#6eb1fd,#7cc2fe);
+	    	}
+	    	.main .home{	    		
+	    		left: 1.4rem;
+				bottom: 1.48rem;
+				box-shadow: 0 5px 15px 0 #ccc;
+				background: #ccc;	    		
+	    	}
+	    	.main .home.on{
+	    		box-shadow: 0 5px 15px 0 #b6e6b7;
+	    		background: -webkit-linear-gradient(left,#90cb81,#99d466,#a1dd52);	    		
+	    	}
+	    </style>
+	</head>
+	<body>
+		<div class="main">
+			
+			<div class="user-img">
+				<img src="img/uuuu.jpg" alt="" />
+				<div class="bg">
+					<img src="img/intro.png" style="top:-3rem" class="pic"/>
+				</div>				
+			</div>
+			<div class="confirm">识别失败，再试一次</div>
+			<div class="home">识别成功，返回首页</div>
+		</div>
+	</body>
+</html>
+<script>
+	//识别头像
+	!function(){
+		var oBg = document.getElementsByTagName('img')[1],
+			oCon = document.querySelector('.confirm'),
+			oHome = document.querySelector('.home'),
+			num = Math.floor(parseFloat(oBg.style.top)),
+			flag = true;
+	
+		var timer = setInterval(run,15);
+		function run(){			
+			num += 0.03;
+			if(num >= 0){				
+				clearInterval(timer);
+				oBg.style.display ='none';
+				oCon.classList.add('on');
+				oHome.classList.add('on');
+				flag = false;
+				change(oCon,true,flag);
+				change(oHome,false,flag);
+			}
+			oBg.style.top = num + 'rem';
+		}		
+		console.log(flag);
+		
+		//检测是否能返回首页与在识别一次		
+		function change(obj,bool,flag){
+			if(!flag){
+				obj.onclick = function(){
+					if(bool){
+						window.location.href = 'shibieing.html';
+					}else{
+						window.location.href = 'index.html';
+					}
+//					alert(1);
+				}
+			}
+		}		
+	}();
+</script>
